@@ -9,7 +9,7 @@ function LoginAndEditCV() {
 
     // skip popup tutorial
     cy.get('#welcome-to').contains('Bỏ qua').should('be.visible').click()
-    
+
     // click Careerviet Profile on Dashboard
     cy.get('.side-navbar').contains('Hồ sơ CareerViet').should('be.visible').click()
 }
@@ -30,14 +30,14 @@ function LoginFalseAndLoginAgain() {
     // transfer data in form login again
     cy.get('#username').should('be.visible').clear().type('quymy_m@yopmail.com')
     cy.get('#password').should('be.visible').clear().type('987654321')
-    cy.get('#submit_login').should('be.visible').click({force:true})
+    cy.get('#submit_login').should('be.visible').click({ force: true })
 
 
     // skip popup tutorial
     cy.get('#welcome-to').contains('Bỏ qua').should('be.visible').click()
-    
+
     // click Careerviet Profile on Dashboard
-    cy.get('.list-unstyled').contains('Hồ sơ CareerViet').click({force:true})
+    cy.get('.list-unstyled').contains('Hồ sơ CareerViet').click({ force: true })
 
     // skip popup shared profile
     cy.get('[class="container-ckb"]').click()
@@ -45,25 +45,38 @@ function LoginFalseAndLoginAgain() {
 
     // Create or edit CV Profile
     // Title Resume
-    cy.get('#t-resume-section').contains('Chỉnh sửa').click()
-    cy.get('#resume_title').should('be.visible').clear().type('Fresher Automation')
-    cy.get('#t-resume-form').find('.btn-gradient').should('contain','Lưu Lại').click()
+    cy.get('#t-resume-section a').click()
+    cy.get('#resume_title').should('be.visible').clear().type('Fresher Automation Tester')
+    cy.get('#t-resume-form').find('.btn-gradient').should('contain', 'Lưu Lại').click()
 
     // Personal Information
-    cy.get('#personalinfo-section').contains('Chỉnh sửa').click()
+    cy.get('#personalinfo-section a').click()
     cy.get('#lastname').clear().type('Hồ Quý Phương') // last name
     cy.get('#firstname').clear().type('Ly') // first name
-    cy.get('#gender_f').click({force:true}) // gender
+    cy.get('#gender_f').click({ force: true }) // gender
 
     cy.get('[name="birthday"]').click() // choose birthday
-    for(var i = 0; i < 10; i++) {
-        cy.get('.dtpicker-content').find('a[class="dtpicker-compButton increment dtpicker-compButtonEnable"]').eq(0).click()
-        cy.get('.dtpicker-content').find('a[class="dtpicker-compButton decrement dtpicker-compButtonEnable"]').eq(1).click()
-        cy.get('.dtpicker-content').find('a[class="dtpicker-compButton increment dtpicker-compButtonEnable"]').eq(2).click()
-    }
-    cy.get('.dtpicker-content').find('a[class="dtpicker-button dtpicker-buttonSet"]').click()
+    // declare variables for increment and decrement buttons for birthdays
 
-    cy.get('#mobile').clear().type('0984561987') // mobile
+    for (var i = 0; i < 2; i++) {
+        cy.get('.dtpicker-content')
+            .find('a[class="dtpicker-compButton increment dtpicker-compButtonEnable"]')
+            .eq(0)
+            .click()
+        cy.get('.dtpicker-content')
+            .find('a[class="dtpicker-compButton decrement dtpicker-compButtonEnable"]')
+            .eq(1)
+            .click()
+        cy.get('.dtpicker-content')
+            .find('a[class="dtpicker-compButton decrement dtpicker-compButtonEnable"]')
+            .eq(2)
+            .click()
+    }
+    cy.get('.dtpicker-content')
+        .find('a[class="dtpicker-button dtpicker-buttonSet"]')
+        .click()
+
+    cy.get('#mobile').clear().type('0984561987') // Mobile
     cy.get('#slnationality').select('Người Việt Nam') // Nationallity
     cy.get('#slcountry').select('Việt Nam') // International
     cy.get('#slcity').select("Hà Nội") // Country
@@ -74,22 +87,55 @@ function LoginFalseAndLoginAgain() {
         .contains('Lưu lại')
         .click()
 
-    // close popup cause after clicking save but the popup form not closed yet
+    // close popup cause after clicking save but the popup form not closed
     cy.get('button[class="fancybox-button fancybox-close-small"]').click()
+
+
+    // Objective (Muc tieu nghe nghiep) Optional
+
+
+    // Career Information (Thông tin nghề nghiệp)
+    cy.get('#widget-18 a').should('be.visible').click() // click on edit button
+    // popup form appearance
+
+    // worktype (Hình Thức Làm Việc)
+    cy.get('#chkResumeType_1').click()
+    cy.get('#chkWorkHome').click().should('be.checked')  // Flexible work (Phương thức làm việc WFH) - Not Required
+
+    cy.get('[name="level_id"]').select('Nhân viên') // Level ID (Cấp bậc mong muốn)
+    cy.get('#salary_unit').select('USD')
+    cy.get('#salary_from').clear().type('800')
+    cy.get('#salary_to').clear().type('1000')
+        //cy.get('#salary_unit').select('Thỏa thuận') // Expected Salary 
+    //cy.get('#salary_unit').select('VNĐ')
+
+    cy.get('#INDUSTRY_ID').select('["CNTT - Phần mềm","Quản lý chất lượng (QA/QC)"]') // industry
+
+    cy.get('#select_location_id_3').select('Hồ Chí Minh') // Expected WOrk location
+    cy.get('#select_district_id_3').select('Quận 3')
+    cy.get('#desired-form').contains('Thêm').click() // Optional add more desired locations work place
+    cy.get('#select_location_id_1').select('Đà Nẵng')
+    cy.get('#select_district_id_1').select('Quận Sơn Trà')
+
+    cy.get('#OUTCOUNTRY_ID').select('["Canada","Hoa Kỳ","Nhật Bản"]') // different Country
+    cy.get('#BENEFIT_ID').select('["Chế độ bảo hiểm","Chế độ thưởng","Chăm sóc sức khỏe"]')
+    cy.get('button').parents('#desired-form').contains('Lưu lại').click()
+
+    // Click on form Experience
+    cy.get('#widget-15').find('span').contains('Thêm mới').click()
+
 }
-   
-   
-   
+
 export class Login_EditCV {
 
     // Flow: Login Then Click Edit CV Profile
-    LoginThenEditCV() {   
-       // LoginAndEditCV()
+    LoginThenEditCV() {
+        // LoginAndEditCV()
     }
 
     LoginFalse_LoginAgain() {
         LoginFalseAndLoginAgain()
     }
 }
-   
+
 export const onLoginThenEditCV = new Login_EditCV();
