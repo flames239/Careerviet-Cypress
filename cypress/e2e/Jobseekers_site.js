@@ -1,11 +1,10 @@
-import {onNavigationPage} from "../support/page_objects/navigationPage"
-import {onLoginThenEditCV} from "../support/page_objects/Login_EditCV"
-import {onRegisterUser} from "../support/page_objects/Register_Account"
+import { onNavigationPage } from "../support/page_objects_jsk/Menu/navigationPage"
+import { onEditCVProfile } from "../support/page_objects_jsk/Dashboard/EditCV"
+import { onRegisterUser } from "../support/page_objects_jsk/Menu/Register_Account"
+import { onEditCVTemplate } from "../support/page_objects_jsk/Dashboard/EditCVTemplate"
+import { onLogin } from "../support/page_objects_jsk/Menu/Login"
 
-
-/// <reference types="cypress" />
-describe('Jobseekers Site',() => {
-    
+describe('Jobseekers Site', () => {
     beforeEach('open application', () => {
         cy.visit('/')
     })
@@ -15,13 +14,21 @@ describe('Jobseekers Site',() => {
         onNavigationPage.Ultilities()
     })
 
-    it.only('Login then Edit CV Profile', () => {
+    it('Login then Click CV Profile', () => {
         // onLoginThenEditCV.LoginThenEditCV()
-        onLoginThenEditCV.LoginFalse_LoginAgain()
-
+        onLogin.LoginFunction()
+        onEditCVProfile.EditCVProfile()
     })
 
     it('Register Account', () => {
         onRegisterUser.Register_Function()
     })
+
+    it.only('Login then Click Edit CV Template', () => {
+        onLogin.LoginFunction()
+        onLogin.SkipTutorFunc()
+        onEditCVTemplate.Login_EditTemplate()
+    })
+
+
 })
