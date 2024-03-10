@@ -13,7 +13,7 @@ import { onSetting } from "../support/page_objects_jsk/Dashboard/Setting"
 
 describe('Jobseekers Site', () => {
     beforeEach('open application', () => {
-        cy.visit('/')
+        cy.openHomePage()
     })
 
     it('verify navigation across the page', () => {
