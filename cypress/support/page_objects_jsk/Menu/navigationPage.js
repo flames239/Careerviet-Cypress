@@ -1,77 +1,64 @@
-function ClickOn_NewestJobs() {
- // Wait for the dropdown to become visible
-    cy.get('.left-wrap .dropdown-menu').then( menu => {
-        cy.wrap(menu)
-        .eq(0)
-        .invoke('show')
-        .contains('Việc làm mới nhất')
-        .should('be.visible')
-        .click();    
-    })
-        
-}
-function ClickOn_CVHay() {
-    cy.get('.left-wrap').contains('CV Hay').click()
-}
-
-function ClickOn_VietNamSalary() {
-    cy.get('.left-wrap').contains('VietnamSalary').click()
-}
-
-function ClickOn_CareerMap() {
-    cy.get('.left-wrap').contains('CareerMap').click()
-}
-
-function ClickOn_TalentCommunity() {
-    cy.get('.left-wrap').contains('Cẩm Nang').click()
-}
-
-function ClickOn_CareerStart() {
-    cy.get('.left-wrap').contains('CareerStart').click()
-}
-
-function ClickOn_Ultilities() {
-    cy.get('.left-wrap .dropdown-menu')
-        .eq(1)
-        .invoke('show')
-        .contains('Test DISC')
-        .should('be.visible')    
-        .click();       
-}
-
-
 export class NavigationHeaderPage {
     /*
-    Declare Function
-    Then write logic code inside Function
-    */ 
-    AllJob_Newest() {   
-        ClickOn_NewestJobs()
+         Declare Function
+         Then write logic code inside Function
+         */
+    AllJob_Newest() {
+      // Wait for the dropdown to become visible
+      cy.get(".left-wrap .dropdown-menu").then((menu) => {
+        cy.wrap(menu)
+          .eq(0)
+          .invoke("show")
+          .contains("Việc làm mới nhất")
+          .should("be.visible")
+          .click();
+      });
     }
-
+  
     CVHay() {
-        ClickOn_CVHay()
+      cy.get(".left-wrap").contains("CV Hay").click();
     }
-
+  
     VietNamSalary() {
-        ClickOn_VietNamSalary()
+      cy.get(".left-wrap")
+        .contains("a", "VietnamSalary")
+        .invoke("removeAttr", "target")
+        .click(); // call invoke to intercept open in new tab
     }
-
+  
     CareerMap() {
-        ClickOn_CareerMap()
+      cy.get(".left-wrap")
+        .contains("CareerMap")
+        .invoke("removeAttr", "target")
+        .click(); // call invoke to intercept open in new tab
     }
-
+  
     TalentCommunity() {
-        ClickOn_TalentCommunity()
+      cy.get(".left-wrap").contains("Cẩm Nang").click();
     }
-
+  
     CareerStart() {
-        ClickOn_CareerStart()
+      cy.get(".left-wrap").contains("CareerStart").click();
     }
-
-    Ultilities() {
-       ClickOn_Ultilities() 
+  
+    UltilitiesSalaryCalculator() {
+      cy.get(".left-wrap .dropdown-menu")
+        .eq(1)
+        .invoke("show")
+        .contains("Tính Lương")
+        .should("be.visible")
+        .click();
     }
-}
-
-export const onNavigationPage = new NavigationHeaderPage();
+  
+    UltilitiesTestDISC() {
+      cy.get(".left-wrap .dropdown-menu")
+      .eq(1)
+      .invoke("show")
+      .contains("Test DISC")
+      .should("be.visible")
+      .click();
+    }
+  }
+  
+  export const onNavigationPage = new NavigationHeaderPage();
+  
