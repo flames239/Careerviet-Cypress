@@ -1,5 +1,4 @@
 export class Register_User {
-
     // Flow: Login Then Click Edit CV Profile
     Register_Function(lastName, firstName, email, passord, confirmPassword) {
         // click register on header homepage 

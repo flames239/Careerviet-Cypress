@@ -1,5 +1,4 @@
 export class Setting {
-
     ClickSetting() {
         cy.get('nav[class="side-navbar"] ul[class="list-unstyled"] li')
             .find('a')
