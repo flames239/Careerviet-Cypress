@@ -4,10 +4,9 @@ export class allNotifications {
             .find('a[title="Xem tất cả thông báo"]')
             .should("contain", "Xem tất cả thông báo")
             .click({ force: true })
-
+    
         cy.get('div[class="setting"] a').click()
     }
-
 }
 
 export const onAllNotifications = new allNotifications();

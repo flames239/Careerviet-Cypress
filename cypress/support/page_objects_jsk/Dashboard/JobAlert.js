@@ -4,11 +4,11 @@ export class JobAlert {
     cy.get(".list-unstyled").contains("Thông Báo Việc Làm").click(); // click Job Alert
   }
 
-  CreateJobAlert() {
+  CreateJobAlert(titleJob) {
     cy.get(".button-add").find("a").should("be.visible").click(); // Click Create Job Alert
 
     // popup form appears
-    cy.get("#keywordJA").should("be.visible").clear().type("Manual Tester"); // input title Job Alert
+    cy.get("#keywordJA").should("be.visible").clear().type("Manual Tester").should('have.value', `${titleJob}`); // input title Job Alert
 
     cy.get("#industryJA_chosen").click(); // click field industries to appear dropdown list
     // Click on the options while holding the Ctrl (or Command) key
@@ -54,9 +54,11 @@ export class JobAlert {
   }
 
   ViewMoreJobAlert() {
-    cy.get('div[class="table"] table tbody tr td[class="suitable-job"]').eq(0).find('a').click()
+    cy.get('div[class="table"] table tbody tr td[class="suitable-job"]')
+      .eq(0)
+      .find("a")
+      .click();
   }
-
 }
 
 export const onJobAlert = new JobAlert();

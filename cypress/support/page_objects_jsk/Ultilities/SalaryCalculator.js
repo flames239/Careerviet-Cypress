@@ -2,8 +2,8 @@ export class WorkWithUltilities {
     SalaryCalculator(summarySalary, allowances) {
         cy.get('.form-calculate').should('be.visible')
         cy.get('#vnd').click({force:true}) // radio VND or USD
-        cy.get('#gross_salary_adv').clear().type(`${summarySalary}`) // input summary salary
-        cy.get('#allowances_salary').clear().type(`${allowances}`) // input allowances
+        cy.get('#gross_salary_adv').clear().type(`${summarySalary}`).should('have.value',`${summarySalary}`) // input summary salary
+        cy.get('#allowances_salary').clear().type(`${allowances}`).should('have.value',`${allowances}`) // input allowances
         // cy.get('#training_worker').select('')
         // cy.get('#region').select('')
         // cy.get('#num_of_depend_adv').select('')

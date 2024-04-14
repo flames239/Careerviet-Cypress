@@ -52,11 +52,11 @@ export class NavigationHeaderPage {
 
   UltilitiesTestDISC() {
     cy.get(".left-wrap .dropdown-menu")
-      .eq(1)
-      .invoke("show")
-      .contains("Test DISC")
-      .should("be.visible")
-      .click();
+    .eq(1)
+    .invoke("show")
+    .contains("Test DISC")
+    .should("be.visible")
+    .click();
   }
 }
 
