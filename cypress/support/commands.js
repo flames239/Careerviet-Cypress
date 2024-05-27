@@ -27,3 +27,7 @@ Cypress.Commands.add('openHomePage',() => {
     cy.visit('/')
 })
 
+Cypress.Commands.add('openHomePageEmp',() => {
+    cy.visit('/vi/employers')
+})
+

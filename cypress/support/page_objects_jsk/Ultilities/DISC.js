@@ -8,7 +8,6 @@ export class WorkWithDISC {
         for (var questionNumber = 1; questionNumber <= 24; questionNumber++) {
             let baseValue = (questionNumber - 1) * 4; // Calculate the base value for the question
             let mostSelect, leastSelect;
-
             do {
                 mostSelect = 1 + Math.floor(Math.random() * 4); // Random offset between 1 and 4
                 leastSelect = 1 + Math.floor(Math.random() * 4);
@@ -47,10 +46,10 @@ export class WorkWithDISC {
         // input data in the form
         cy.get('#men').click()
         //cy.get('#women').click()
-        cy.get('#fullname').clear().type(fullName).should('have.value', fullName)
-        cy.get('#email').clear().type(email).should('have.value', email)
-        cy.get('#phone').clear().type(phone).should('have.value', phone)
-        cy.get('#jobposition').clear().type(jobPositions).should('have.value', jobPositions)
+        cy.get('#fullname').clear().type(fullName).should('have.value', `${fullName}`)
+        cy.get('#email').clear().type(email).should('have.value', `${email}`)
+        cy.get('#phone').clear().type(phone).should('have.value', `${phone}`)
+        cy.get('#jobposition').clear().type(jobPositions).should('have.value', `${jobPositions}`)
         cy.get('#hideinfor').click()
         cy.get('.box-result a[role="button"]').click()
 
