@@ -1,7 +1,7 @@
 import { onNavigationPage } from "../support/page_objects_emp/Menu/navigationPage";
 import { onLogin } from "../support/page_objects_emp/Menu/Login";
 import { onWorkingOnDB } from "../support/page_objects_emp/Dashboard/WorkingOnDashBoard";
-import { onManagementJob } from "../support/page_objects_emp/Dashboard/WorkingWithManageJob";
+import { onWorkWithhManageJob } from "../support/page_objects_emp/Dashboard/WorkingWithManageJob";
 
 
 
@@ -24,8 +24,16 @@ describe("Employer Site", () => {
 
     it.only('Login employer then direct to dashboard page and take some action on dashboard page', () => {
         onLogin.LoginFunction('123', '123', 'dingdong23996@gmail.com', 'reborn2391996')
-        
-        onManagementJob.PostsJobForm('Nhan Vien Kiem Tra Chat Luong / Truong Phong QA')
+        onWorkWithhManageJob.ClickManageJob()
+        onWorkWithhManageJob.JobOnHiring('Nhan Vien Kiem Tra Chat Luong / Truong Phong QA',
+            'QAL123',
+            '650',
+            'Input your text here',
+            'Input your text here',
+            'https://www.youtube.com/watch?v=RDpcHAGZ0XI',
+            'https://www.youtube.com/watch?v=M8qQTbUgRfc',
+            '15,000,000',
+            '25,000,000')
     })
 
 });
