@@ -151,8 +151,42 @@ export class workWithhManageJob {
     cy.get('#JOB_ANNUALLEAVE').clear().type(`${job_Annualleave}`).should('have.value', `${job_Annualleave}`)
 
     // Click Btn Save and Wait to Page Pending Jobs
-    cy.get('div[class="item-add-info"]').find('button[class="button-add-update btn-post"]').click()
-    cy.wait(2000)
+    cy.get('div[class="item-add-info"]')
+      .find('button[class="button-add-update btn-post"]')
+      .click()
+
+    // click job information
+    cy.get('div[class="jobs-posting-detail-bottom"] ul') 
+      .find('li')
+      .eq(1)
+      .click()
+
+    // click autoresponse
+    cy.get('div[class="jobs-posting-detail-bottom"] ul')     
+      .find('li')
+      .eq(2)
+      .click()
+    cy.get('a[class="btn-gradient btn-edit-email"]').click()
+    cy.get('#slAutoReply').select('294976')
+    cy.wait(1000)
+    cy.get('div[class="jobs-posting-modal jobs-posting-16-modal fancybox-content"] button[name="save"]').click()
+
+    // click resume tag management  
+    cy.get('div[class="jobs-posting-detail-bottom"] ul')  
+      .find('li')
+      .eq(3)
+      .click()
+
+    // click Btn post job
+    cy.get('ul[class="list-action"]').find('li').eq(1).click()
+
+    // choose service to post jobs
+    cy.get('div[class="table-jobs-waiting"]').find('#c_pack_2979984_1537_4288138').click() // click service
+    cy.get('div[class="button"]').find('a[class="btn-gradient btn-posting-jobs"]').click() // click btn postjobs
+    cy.get('div[class="form-group form-submit"]').find('#btnSave').click() // click confirm
+    cy.get('div[class="jconfirm-buttons"] button').click() // close popup confirm
+    
+
   }
 
   JobOnPending() { }
