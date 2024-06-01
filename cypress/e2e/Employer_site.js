@@ -33,7 +33,21 @@ describe("Employer Site", () => {
             'https://www.youtube.com/watch?v=RDpcHAGZ0XI',
             'https://www.youtube.com/watch?v=M8qQTbUgRfc',
             '15,000,000',
-            '25,000,000')
+            '25,000,000',
+            '30', // day received CV
+            '23', // From Age
+            '1',  // select Exp
+            '2', // input Exp From
+            '6', // input Exp To 
+            '3', // select Level_ID
+            '3', // select Degree_ID
+            '2 Months',
+            'Monday To Friday: 8h30 - 17h30',
+            'Learning skill from platform Udemy, Coursera',
+            'Friendly, Leader Manager Nice',
+            'Bonus Attractive 13th, Review Salary base on 6 month / year',
+            'With company rule',
+            '20 days / years')
     })
 
 });
