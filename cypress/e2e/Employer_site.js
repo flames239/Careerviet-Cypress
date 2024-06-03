@@ -27,7 +27,7 @@ describe("Employer Site", () => {
         onWorkWithhManageJob.ClickManageJob()
         onWorkWithhManageJob.JobOnHiring('Nhan Vien Kiem Tra Chat Luong / Truong Phong QA',
             'QAL123',
-            '650',
+            '650', // option value location 4, 8, 76, 64, 781, 281, 240, 241, 75, 650, 651, 62, 78, 26, 71, 50, 1042, 511, 900, 1064, 61, 67, 59, 19, 351, 39, 320, 31, 780, 18, 321, 901, 58, 77, 60, 1069, 1070, 1071, 1072
             'Input your text here',
             'Input your text here',
             'https://www.youtube.com/watch?v=RDpcHAGZ0XI',
