@@ -91,20 +91,22 @@ export class NavigationHeaderPage {
     }
   
     HiringSite() {
-      cy.get('.left-wrap')
-        .contains('a', 'Cẩm Nang Tuyển Dụng')
+      cy.get('.left-wrap ul li a')
+        .contains('Cẩm Nang Tuyển Dụng')
         .click();
     }
   
     EmployerOfChoice() {
-      cy.get('.left-wrap')
-        .contains('a', 'Employer of Choice')
+      cy.get('.left-wrap ul li a')
+        .contains('Employer of Choice')
+        .invoke('removeAttr','target')
         .click();
+      cy.go('back')
     }
   
     Contact() {
-      cy.get('.left-wrap')
-        .contains('a', 'Liên hệ')
+      cy.get('.left-wrap ul li a')
+        .contains('Liên hệ')
         .click();
     }
   }
