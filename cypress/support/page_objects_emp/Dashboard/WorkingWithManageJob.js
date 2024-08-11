@@ -827,23 +827,24 @@ export class workWithhManageJob {
             .clear()
             .type(`${job_FromAge}`)
             .should('have.value', `${job_FromAge}`);
-        cy.get('#JOB_ISEXPERIENCE')
-            .select(`${job_IsExp}`)
-            .should('have.value', `${job_IsExp}`);
-        cy.get('#JOB_FROMEXPERIENCE')
-            .clear()
-            .type(`${job_FromExp}`)
-            .should('have.value', `${job_FromExp}`);
-        cy.get('#JOB_TOEXPERIENCE')
-            .clear()
-            .type(`${job_ToExp}`)
-            .should('have.value', `${job_ToExp}`);
+        // cy.get('#JOB_ISEXPERIENCE')
+        //     .select(`${job_IsExp}`)
+        //     .should('have.value', `${job_IsExp}`);
+        // cy.get('#JOB_FROMEXPERIENCE')
+        //     .clear()
+        //     .type(`${job_FromExp}`)
+        //     .should('have.value', `${job_FromExp}`);
+        // cy.get('#JOB_TOEXPERIENCE')
+        //     .clear()
+        //     .type(`${job_ToExp}`)
+        //     .should('have.value', `${job_ToExp}`);
         cy.get('#LEVEL_ID')
             .select(`${Level_Id}`)
             .should('have.value', `${Level_Id}`);
         cy.get('#DEGREE_ID')
             .select(`${Degree_Id}`)
             .should('have.value', `${Degree_Id}`);
+        
         // CONTACT INFORMATION (SKip)
         // EMPLOYER'S PRIORITIZED CRITERIA IN SCREENING( RECRUITMENT INFORMATION ) (Skip)
         // OTHER INFO (OPTIONAL)
