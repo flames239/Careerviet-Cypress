@@ -818,67 +818,6 @@ export class workWithhManageJob {
             i++;
         }
 
-<<<<<<< HEAD
-=======
-        // BASIC REQUIREMENT
-        cy.get('#JOB_FROMAGE')
-            .clear()
-            .type(`${job_FromAge}`)
-            .should('have.value', `${job_FromAge}`);
-        // cy.get('#JOB_ISEXPERIENCE')
-        //     .select(`${job_IsExp}`)
-        //     .should('have.value', `${job_IsExp}`);
-        // cy.get('#JOB_FROMEXPERIENCE')
-        //     .clear()
-        //     .type(`${job_FromExp}`)
-        //     .should('have.value', `${job_FromExp}`);
-        // cy.get('#JOB_TOEXPERIENCE')
-        //     .clear()
-        //     .type(`${job_ToExp}`)
-        //     .should('have.value', `${job_ToExp}`);
-        cy.get('#LEVEL_ID')
-            .select(`${Level_Id}`)
-            .should('have.value', `${Level_Id}`);
-        cy.get('#DEGREE_ID')
-            .select(`${Degree_Id}`)
-            .should('have.value', `${Degree_Id}`);
-        
-        // CONTACT INFORMATION (SKip)
-        // EMPLOYER'S PRIORITIZED CRITERIA IN SCREENING( RECRUITMENT INFORMATION ) (Skip)
-        // OTHER INFO (OPTIONAL)
-        cy.get('div[class="form-wrap other-information-wrap"]').find("a").click();
-        cy.get('#JOB_PROBATIONTIME')
-            .clear()
-            .type(`${job_Probation}`)
-            .should('have.value', `${job_Probation}`);
-        cy.get('#JOB_WORKTIME')
-            .clear()
-            .type(`${job_WorkTime}`)
-            .should('have.value', `${job_WorkTime}`);
-        cy.get('#JOB_TRAINOPPORTUNITY')
-            .clear()
-            .type(`${job_TrainOpportunity}`)
-            .should('have.value', `${job_TrainOpportunity}`);
-        cy.get('#JOB_COLLEAGUE')
-            .clear()
-            .type(`${job_Collegue}`)
-            .should('have.value', `${job_Collegue}`);
-        cy.get('#JOB_ADDSALARY')
-            .clear()
-            .type(`${job_Benefit}`)
-            .should('have.value', `${job_Benefit}`);
-        cy.get('#JOB_ADDSALARY')
-            .clear()
-            .type(`${job_AddSalary}`)
-            .should('have.value', `${job_AddSalary}`);
-        cy.get('#JOB_ANNUALLEAVE')
-            .clear()
-            .type(`${job_Annualleave}`)
-            .should('have.value', `${job_Annualleave}`);
-
-
-
->>>>>>> 10ded0758f7d680b30ae5c190af7978263f9e0c5
         // Click Btn Save and Wait to Page Pending Jobs
         cy.get('div[class="item-add-info"]')
             .find('button[class="button-add-update btn-post"]')
