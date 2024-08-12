@@ -15,10 +15,10 @@ describe("Employer Site", () => {
         onNavigationPage.Contact();
     });
 
-    // it("Login employer then direct to dashboard page and take some action", () => {
-    //     onLogin.LoginFunction("123", "123", "dingdong23996@gmail.com", "reborn2391996");
-    //     // onWorkingOnDB.WorkingOnDashBoard();
-    // });
+    it("Login employer then direct to dashboard page and take some action", () => {
+        onLogin.LoginFunction("123", "123", "dingdong23996@gmail.com", "reborn2391996");
+        onWorkingOnDB.WorkingOnDashBoardPage();
+    });
 
     it("Login employer then direct to postjob page and take some action", () => {
         onLogin.LoginFunction("123", "123", "dingdong23996@gmail.com", "reborn2391996");
@@ -71,19 +71,6 @@ describe("Employer Site", () => {
             "-Have University certificate of economic, marketing, Bussiness Administration \n- English proficiency is required between daily conversations with suppliers and BOD members of our company. \n- Have experience of co-working with sales team/ working with clients in FMCG scopes \n- Priority for fesh student, willing to learn",
             "https://www.youtube.com/watch?v=RDpcHAGZ0XI",
             "https://www.youtube.com/watch?v=M8qQTbUgRfc",
-            "23", // From Age
-            "1", // select Exp
-            "2", // input Exp From
-            "5", // input Exp To
-            "4", // select Level_ID
-            "3", // select Degree_ID
-            "2 Months",
-            "Monday To Friday: 8h30 - 17h30",
-            "Learning skill from platform Udemy, Coursera",
-            "Friendly, Leader Manager Nice",
-            "Bonus Attractive 13th, Review Salary base on 6 month / year",
-            "With company rule",
-            "20 days / years"
         )
     });
 })

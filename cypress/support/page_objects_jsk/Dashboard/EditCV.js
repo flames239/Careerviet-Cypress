@@ -1,8 +1,8 @@
 // Thành tích nổi bật (Optional)
-function Highlight() {}
+function Highlight() { }
 
 // Hoạt động khác (Optional)
-function OtherActivity() {}
+function OtherActivity() { }
 export class EditCV {
   // Flow: Login Then Click Edit CV Profile
   TitleResume(titleResume) {
@@ -20,7 +20,7 @@ export class EditCV {
     cy.get('#resume_title')
       .clear()
       .type(`${titleResume}`)
-      .should("be.visible", "have.value", `${titleResume}`);
+      .should('be.visible', 'have.value', `${titleResume}`);
     cy.get('#t-resume-form')
       .find('.btn-gradient')
       .should('contain', 'Lưu Lại')
@@ -46,8 +46,7 @@ export class EditCV {
       .clear()
       .type(`${lastName}`)
       .should('be.visible', 'have.value', `${lastName}`); // first name
-    cy.get('#gender_f').click({ force: true }); // gender
-
+    cy.get('#gender_f').click({ force: true }); // gender'
     cy.get('[name="birthday"]').click(); // choose birthday
     // declare variables for increment and decrement buttons for birthdays
     cy.get('.dtpicker-content')
@@ -69,7 +68,7 @@ export class EditCV {
       .find('a[class="dtpicker-button dtpicker-buttonSet"]')
       .click();
 
-    cy.get("#mobile")
+    cy.get('#mobile')
       .clear()
       .type(`${phoneNumber}`)
       .should('be.visible', 'have.value', `${phoneNumber}`); // Mobile
@@ -80,7 +79,7 @@ export class EditCV {
     cy.get('input[name="address"]')
       .clear()
       .type(`${address}`)
-      .should("be.visible", "have.value", `${address}`); // Address
+      .should('be.visible', 'have.value', `${address}`); // Address
 
     // Click the "Lưu lại" button using contains() method with a more specific selector
     cy.get('form#personalInfoForm button[type="button"]').click();
@@ -89,17 +88,17 @@ export class EditCV {
     cy.get('button[class="fancybox-button fancybox-close-small"]').click();
   }
 
-  CareerInfo(valueLocation,valueLocation_1) {
+  CareerInfo(valueLocation, valueLocation_1) {
     // Career Information (Thông tin nghề nghiệp)
-    cy.get('#widget-18 a').should('be.visible').click(); // click on edit button
+    cy.get('widget-18 a').should('be.visible').click(); // click on edit button
 
     //cy.get('label[for="chkResumeType_1"]').click(); // worktype (Hình Thức Làm Việc)
     cy.get('#chkWorkHome').click({ force: true }); // Flexible work (Phương thức làm việc WFH) - Not Required
 
-    cy.get('[name="level_id"]').select("Nhân viên"); // Level ID (Cấp bậc mong muốn)
-    cy.get('#salary_unit').select("USD");
-    cy.get('#salary_from').clear().type("800");
-    cy.get('#salary_to').clear().type("1000");
+    cy.get('[name="level_id"]').select('Nhân viên'); // Level ID (Cấp bậc mong muốn)
+    cy.get('#salary_unit').select('USD');
+    cy.get('#salary_from').clear().type('800');
+    cy.get('#salary_to').clear().type('1000');
     //cy.get('#salary_unit').select('Thỏa thuận'); // Expected Salary
     //cy.get('#salary_unit').select('VNĐ');
 
@@ -130,7 +129,7 @@ export class EditCV {
       });
 
     cy.get('select[name="LOCATION_ID[]"]').eq(0).select(`${valueLocation}`); // Expected Work location
-//    cy.get('#desired-form').contains('Thêm').click(); // Optional add more desired locations work place
+    //    cy.get('#desired-form').contains('Thêm').click(); // Optional add more desired locations work place
     cy.get('select[name="LOCATION_ID[]"]').eq(1).select(`${valueLocation_1}`);
 
     cy.get('#desired-form button.btn-gradient').click();

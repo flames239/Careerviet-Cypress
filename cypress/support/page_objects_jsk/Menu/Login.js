@@ -7,8 +7,8 @@ export class Login {
         cy.get('input[placeholder="Email hoặc Tên đăng nhập"]')
             .clear()
             .type(wrongEmail)
-            .should('have.value',`${wrongEmail}`)
-        cy.get('input[placeholder="Mật khẩu"]').clear().type(wrongPass).should('have.value',`${wrongPass}`);
+            .should('have.value', `${wrongEmail}`)
+        cy.get('input[placeholder="Mật khẩu"]').clear().type(wrongPass).should('have.value', `${wrongPass}`);
         cy.get("#header_login").contains("Đăng nhập").click();
 
         // popup error appear
@@ -18,8 +18,8 @@ export class Login {
             .click();
 
         // transfer data in form login again
-        cy.get("#username").should("be.visible").clear().type(validEmail).should('have.value',`${validEmail}`)
-        cy.get("#password").should("be.visible").clear().type(validPass).should('have.value',`${validPass}`)
+        cy.get("#username").should("be.visible").clear().type(validEmail).should('have.value', `${validEmail}`)
+        cy.get("#password").should("be.visible").clear().type(validPass).should('have.value', `${validPass}`)
         cy.get("#submit_login").should("be.visible").click({ force: true });
     }
     SkipTutorFunc() {
