@@ -11,7 +11,7 @@ export class workWithhManageJob {
             if (listJobHiring.val().length === 0) {
                 // check if list job is empty, post new jobs
                 cy.get('.box-manage-job-posting .button a').click();
-                cy.get('.all-add-page .item-add-info").find('button').click();
+                cy.get('.all-add-page .item-add-info').find('button').click()
 
                 //Hiring Information
                 //form post Job
