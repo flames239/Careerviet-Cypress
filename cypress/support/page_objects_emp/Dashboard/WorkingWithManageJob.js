@@ -7,120 +7,120 @@ export class workWithhManageJob {
     }
 
     JobOnHiring(titleJob, jobCode_Optional, location, jobDescription, jobRequirements, linkYoutube, linkYoutube_1, salaryForm, salaryTo, job_FromAge, job_IsExp, job_FromExp, job_ToExp, Level_Id, Degree_Id, job_Probation, job_WorkTime, job_TrainOpportunity, job_Collegue, job_Benefit, job_AddSalary, job_Annualleave) {
-        cy.get(".boding-jobs-posting table tbody").then((listJobHiring) => {
+        cy.get('.boding-jobs-posting table tbody').then((listJobHiring) => {
             if (listJobHiring.val().length === 0) {
                 // check if list job is empty, post new jobs
-                cy.get(".box-manage-job-posting .button a").click();
-                cy.get(".all-add-page .item-add-info").find("button").click();
+                cy.get('.box-manage-job-posting .button a').click();
+                cy.get('.all-add-page .item-add-info").find('button').click();
 
                 //Hiring Information
                 //form post Job
-                cy.get("#job_title")
+                cy.get('#job_title')
                     .clear()
                     .type(`${titleJob}`)
-                    .should("have.value", `${titleJob}`);
-                cy.get("#job_code")
+                    .should('have.value', `${titleJob}`);
+                cy.get('#job_code')
                     .clear()
                     .type(`${jobCode_Optional}`)
-                    .should("have.value", `${jobCode_Optional}`); // optional not required (Job Code)
+                    .should('have.value', `${jobCode_Optional}`); // optional not required (Job Code)
                 cy.get('div[id="select_industry_db_chosen"]').then(
                     ($listIndustries) => {
                         // check if field industry is empty, we start to click some industry
                         if ($listIndustries.val().length === 0) {
                             cy.get('div[id="select_industry_db_chosen"]').click();
-                            cy.get(".chosen-results li")
-                                .contains("CNTT - Phần mềm")
+                            cy.get('.chosen-results li')
+                                .contains('CNTT - Phần mềm')
                                 .click({ ctrlKey: true });
-                            cy.get(".chosen-results li")
-                                .contains("Quản lý chất lượng (QA/QC)")
+                            cy.get('.chosen-results li')
+                                .contains('Quản lý chất lượng (QA/QC)')
                                 .click({ ctrlKey: true });
-                            cy.get("body").click({ force: true }); // click body tag to off show list industry
+                            cy.get('body').click({ force: true }); // click body tag to off show list industry
                         } else {
                             // If options are already selected, delete one industry then click a new one
-                            cy.get(".search-choice").find("a").click();
+                            cy.get('.search-choice').find('a').click();
                             cy.get('div[id="select_industry_db_chosen"]').click();
-                            cy.get(".chosen-results li")
-                                .contains("Bán lẻ / Bán sỉ")
+                            cy.get('.chosen-results li')
+                                .contains('Bán lẻ / Bán sỉ')
                                 .click({ ctrlKey: true });
-                            cy.get("body").click({ force: true });
+                            cy.get('body').click({ force: true });
                         }
                     }
                 );
             }
-            cy.get("body").click({ force: true }); // click body tag to off show list industry
+            cy.get('body').click({ force: true }); // click body tag to off show list industry
 
-            cy.get("#post_job_location")
+            cy.get('#post_job_location')
                 .find('select[name="LOCATION_ID[]"]')
                 .select(`${location}`);
 
             cy.get('#post_job_location div[class="chosen-container chosen-container-multi"]').then(($listAddressWorkLocation) => {
                 if ($listAddressWorkLocation.length === 0) {
                     // check if location address is empty, we start to add new address location
-                    cy.get("#post_job_location").find("label a").click(); // add address location
-                    cy.get("#location_id").select("650"); // option value location 4, 8, 76, 64, 781, 281, 240, 241, 75, 650, 651, 62, 78, 26, 71, 50, 1042, 511, 900, 1064, 61, 67, 59, 19, 351, 39, 320, 31, 780, 18, 321, 901, 58, 77, 60, 1069, 1070, 1071, 1072
-                    cy.get("#sldistrict").select("311");
-                    cy.get("#address")
+                    cy.get('#post_job_location').find('label a').click(); // add address location
+                    cy.get('#location_id').select('650'); // option value location 4, 8, 76, 64, 781, 281, 240, 241, 75, 650, 651, 62, 78, 26, 71, 50, 1042, 511, 900, 1064, 61, 67, 59, 19, 351, 39, 320, 31, 780, 18, 321, 901, 58, 77, 60, 1069, 1070, 1071, 1072
+                    cy.get('#sldistrict').select('311');
+                    cy.get('#address')
                         .clear()
-                        .type("251 Nguyễn Thương An")
-                        .should("have.value", "251 Nguyễn Thương An");
-                    cy.get("#insert_location_account").click();
+                        .type('251 Nguyễn Thương An')
+                        .should('have.value', '251 Nguyễn Thương An');
+                    cy.get('#insert_location_account').click();
                     cy.get('div[class="chosen-container chosen-container-multi"]')
                         .eq(1)
                         .click();
-                    cy.get("#post_job_location .chosen-drop .chosen-results")
-                        .find("li")
+                    cy.get('#post_job_location .chosen-drop .chosen-results')
+                        .find('li')
                         .eq(0)
                         .click();
                 } else {
                     cy.get('div[class="chosen-container chosen-container-multi"]')
                         .eq(1)
                         .click();
-                    cy.get("#post_job_location .chosen-drop .chosen-results")
-                        .find("li")
+                    cy.get('#post_job_location .chosen-drop .chosen-results')
+                        .find('li')
                         .eq(0)
                         .click();
                 }
             });
         });
         // Job Description Iframe
-        cy.get("iframe.cke_wysiwyg_frame")
+        cy.get('iframe.cke_wysiwyg_frame')
             .eq(0)
             .then(($iframe) => {
-                const iframeBody = $iframe.contents().find("body");
+                const iframeBody = $iframe.contents().find('body');
                 cy.wrap(iframeBody)
                     .clear() // Clear any existing text
                     .type(`${jobDescription}`);
             });
 
         // Job Requirement Iframe
-        cy.get("iframe.cke_wysiwyg_frame")
+        cy.get('iframe.cke_wysiwyg_frame')
             .eq(1)
             .then(($iframe) => {
                 const iframeBody = $iframe.contents().find("body");
                 cy.wrap(iframeBody).clear().type(`${jobRequirements}`); // Clear any existing text
             });
         // link video present job
-        cy.get("#strVideoRecruiment")
+        cy.get('#strVideoRecruiment')
             .clear()
             .type(`${linkYoutube}`)
-            .should("have.value", `${linkYoutube}`);
-        cy.get("#strVideoRecruiment2")
+            .should('have.value', `${linkYoutube}`);
+        cy.get('#strVideoRecruiment2')
             .clear()
             .type(`${linkYoutube_1}`)
-            .should("have.value", `${linkYoutube_1}`);
+            .should('have.value', `${linkYoutube_1}`);
 
         // range salary
-        cy.get("#salary_from")
+        cy.get('#salary_from')
             .clear()
             .type(`${salaryForm}`)
-            .should("have.value", `${salaryForm}`);
-        cy.get("#salary_to")
+            .should('have.value', `${salaryForm}`);
+        cy.get('#salary_to')
             .clear()
             .type(`${salaryTo}`)
-            .should("have.value", `${salaryTo}`);
+            .should('have.value', `${salaryTo}`);
 
         // Worktype
-        cy.get("#job_type1").click();
+        cy.get('#job_type1').click();
 
         // choose day to receive Resume
         let date = new Date();
@@ -130,7 +130,7 @@ export class workWithhManageJob {
         let futureYear = date.getFullYear();
         let dateAssert = `${futureDay}/${fututeMonth}/${futureYear}`;
 
-        cy.get("#JOB_LASTDATE").click();
+        cy.get('#JOB_LASTDATE').click();
 
         // Check if the future month is already displayed
         cy.get('.monthselect').then(($monthSelect) => {
@@ -141,8 +141,8 @@ export class workWithhManageJob {
         })
 
         // Find and click the future date
-        cy.get(".calendar-table tbody td").each(($dayClick) => {
-            if ($dayClick.text() === futureDay.toString() && $dayClick.hasClass("available")) {
+        cy.get('.calendar-table tbody td').each(($dayClick) => {
+            if ($dayClick.text() === futureDay.toString() && $dayClick.hasClass('available')) {
                 cy.wrap($dayClick).click();
                 // cy.get('#JOB_LASTDATE').should('have.value', `${dateAssert}`)
                 return false; // Exit the loop once the desired element is clicked
@@ -242,7 +242,7 @@ export class workWithhManageJob {
 
         // choose service to post jobs
         cy.get('div[class="table-jobs-waiting"]')
-            .find('#c_pack_3172917_1126_4532276') // 
+            .find('#c_pack_3228231_1126_4600130') // 
             .click(); // click service
         cy.get('div[class="button"]')
             .find('a[class="btn-gradient btn-posting-jobs"]')
@@ -351,15 +351,7 @@ export class workWithhManageJob {
                         const iframeBody = $iframe.contents().find("body");
                         cy.wrap(iframeBody).clear().type(`${jobRequirements}`); // Clear any existing text
                     });
-                // // link video present job
-                // cy.get("#strVideoRecruiment")
-                //     .clear()
-                //     .type(`${linkYoutube}`)
-                //     .should("have.value", `${linkYoutube}`);
-                // cy.get("#strVideoRecruiment2")
-                //     .clear()
-                //     .type(`${linkYoutube_1}`)
-                //     .should("have.value", `${linkYoutube_1}`);
+
 
                 // range salary
                 cy.get("#salary_from")
@@ -481,7 +473,7 @@ export class workWithhManageJob {
 
                             // Wait for the next elements to be visible before interacting with them
                             cy.get('div[class="table-jobs-waiting"]').should('be.visible');
-                            cy.get('#c_pack_3172917_1126_4532276')
+                            cy.get('#c_pack_3228231_1126_4600130')
                                 .should("be.visible")
                                 .click();
 
@@ -851,7 +843,7 @@ export class workWithhManageJob {
 
         // choose service to post jobs
         cy.get('div[class="table-jobs-waiting"]')
-            .find('#c_pack_3172917_1126_4532276') // 
+            .find('#c_pack_3228231_1126_4600130') // 
             .click(); // click service
         cy.get('div[class="button"]')
             .find('a[class="btn-gradient btn-posting-jobs"]')
