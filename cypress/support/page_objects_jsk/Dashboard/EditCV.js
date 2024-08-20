@@ -13,7 +13,7 @@ export class EditCV {
 
     // skip popup shared profile
     cy.get('[class="container-ckb"]').click();
-    cy.get('#popup-modal').contains('Đóng').should('be.visible').click();
+    cy.get('#popup-modal').contains('Đóng').click();
 
     // Title Resume
     cy.get('#t-resume-section').find('div[class="link-edit"] a').click();
@@ -40,29 +40,29 @@ export class EditCV {
     cy.get('#personalinfo-section a').click();
     cy.get('#lastname')
       .clear()
-      .type(`${firstName}`)
-      .should('be.visible', 'have.value', `${firstName}`); // last name
+      .type(firstName)
+      .should('have.value', firstName); // last name
     cy.get('#firstname')
       .clear()
-      .type(`${lastName}`)
-      .should('be.visible', 'have.value', `${lastName}`); // first name
+      .type(lastName)
+      .should('have.value', lastName); // first name
     cy.get('#gender_f').click({ force: true }); // gender'
     cy.get('[name="birthday"]').click(); // choose birthday
     // declare variables for increment and decrement buttons for birthdays
     cy.get('.dtpicker-content')
       .find('input[class="dtpicker-compValue"]')
       .eq(0)
-      .type(`${dayOfBirth}`)
-      .should('be.visible', 'have.value', `${dayOfBirth}`);
-    cy.get(".dtpicker-content")
+      .type(dayOfBirth)
+      .should('have.value', dayOfBirth);
+    cy.get('.dtpicker-content')
       .find('input[class="dtpicker-compValue"]')
       .eq(1)
-      .type(`${monthOfBirth}`)
-      .should("be.visible", "have.value", `${monthOfBirth}`);
+      .type(monthOfBirth)
+      .should('have.value', monthOfBirth);
     cy.get('div[class="dtpicker-comp year"]')
       .find('input[class="dtpicker-compValue"]')
-      .type(`${yearOfBirth}`)
-      .should("be.visible", "have.value", `${yearOfBirth}`);
+      .type(yearOfBirth)
+      .should('have.value', yearOfBirth);
 
     cy.get('.dtpicker-content')
       .find('a[class="dtpicker-button dtpicker-buttonSet"]')
@@ -70,27 +70,28 @@ export class EditCV {
 
     cy.get('#mobile')
       .clear()
-      .type(`${phoneNumber}`)
-      .should('be.visible', 'have.value', `${phoneNumber}`); // Mobile
-    cy.get('#slnationality').select("Người Việt Nam"); // Nationallity
-    cy.get('#slcountry').select("Việt Nam"); // International
-    cy.get('#slcity').select("Hà Nội"); // Country
-    cy.get('#sldistrict').select("Quận Hoàng Mai"); // District
+      .type(phoneNumber)
+      .should('have.value', phoneNumber); // Mobile
+    cy.get('#slnationality').select('Người Việt Nam'); // Nationallity
+    cy.get('#slcountry').select('Việt Nam'); // International
+    cy.get('#slcity').select('Hà Nội'); // Country
+    cy.get('#sldistrict').select('Quận Hoàng Mai'); // District
     cy.get('input[name="address"]')
       .clear()
-      .type(`${address}`)
-      .should('be.visible', 'have.value', `${address}`); // Address
+      .type(address)
+      .should('have.value', address); // Address
 
     // Click the "Lưu lại" button using contains() method with a more specific selector
-    cy.get('form#personalInfoForm button[type="button"]').click();
+    cy.get('#personalInfoForm button[type="button"]').click();
+
 
     // close popup cause after clicking save but the popup form not closed
-    cy.get('button[class="fancybox-button fancybox-close-small"]').click();
+    // cy.get('button[class="fancybox-button fancybox-close-small"]').click();
   }
 
   CareerInfo(valueLocation, valueLocation_1) {
     // Career Information (Thông tin nghề nghiệp)
-    cy.get('widget-18 a').should('be.visible').click(); // click on edit button
+    cy.get('#widget-18 a[title="Chỉnh sửa"]').click(); // click on edit button
 
     //cy.get('label[for="chkResumeType_1"]').click(); // worktype (Hình Thức Làm Việc)
     cy.get('#chkWorkHome').click({ force: true }); // Flexible work (Phương thức làm việc WFH) - Not Required
@@ -144,14 +145,14 @@ export class EditCV {
         cy.get('#widget-15 table td div[class="link-edit"]').should(
           'be.visible'
         );
-        cy.get('#levelcurrent_id').select("Nhân viên");
+        cy.get('#levelcurrent_id').select('Nhân viên');
         cy.get('#frm_Experience .form-button .button-save').click();
 
         cy.get('#widget-15').find('span').contains('Thêm mới').click();
         cy.get('[name="rexp_title"]')
           .clear()
           .type(`${title}`)
-          .should('be.visible', 'have.value', `${title}`); // Title - Vị trí / Chức Danh
+          .should('have.value', `${title}`); // Title - Vị trí / Chức Danh
         cy.get('[name="rexp_company"]')
           .clear()
           .type(`${nameCompany}`)

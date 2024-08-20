@@ -61,91 +61,36 @@ describe("Jobseekers Site", () => {
       "06",
       "2029"
     );
-  });
-
-  it("Login then Click Edit CV Template", () => {
-    onLogin.LoginFunction(
-      "ngohoang123@yopmail.com",
-      "123",
-      "ngohoang123@yopmail.com",
-      "987654321"
-    );
-    onLogin.SkipTutorFunc();
-    onEditCVTemplate.OnOffCoverCV();
-    onEditCVTemplate.ChangeTemplateCV();
     onEditCVTemplate.ChangeEditTemplateCV();
+    onEditCVTemplate.ChangeTemplateCV();
+    onEditCVTemplate.OnOffCoverCV();
     onEditCVTemplate.Language_Font_Size();
     onEditCVTemplate.ButtonGroup();
 
-  });
-
-  it("Login then click My Job", () => {
-    onLogin.LoginFunction(
-      "ngohoang123@yopmail.com",
-      "123",
-      "ngohoang123@yopmail.com",
-      "987654321"
-    );
     onLogin.SkipTutorFunc();
     onMyJob.ClickMyJob();
-  });
 
-  it("Login then Click Job Alert", () => {
-    onLogin.LoginFunction(
-      "ngohoang123@yopmail.com",
-      "123",
-      "ngohoang123@yopmail.com",
-      "987654321"
-    );
     onLogin.SkipTutorFunc();
     onJobAlert.ClickJobAlert();
     onJobAlert.CreateJobAlert('Nhân viên Thu Hồi Công Nợ')
     onJobAlert.ViewMoreJobAlert()
-  });
 
-  it("Login then Click My Employers", () => {
-    onLogin.LoginFunction(
-      "ngohoang123@yopmail.com",
-      "123",
-      "ngohoang123@yopmail.com",
-      "987654321"
-    );
-    onLogin.SkipTutorFunc();
     onDashboardMyEmployers.ClickMyEmployers();
-  });
 
-  it("Login then Click All Notification", () => {
-    onLogin.LoginFunction(
-      "ngohoang123@yopmail.com",
-      "123",
-      "ngohoang123@yopmail.com",
-      "987654321"
-    );
-    onLogin.SkipTutorFunc();
     onAllNotifications.ClickAllNotification();
-  });
 
-  it("Login then Click Setting", () => {
-    onLogin.LoginFunction(
-      "ngohoang123@yopmail.com",
-      "123",
-      "ngohoang123@yopmail.com",
-      "987654321"
-    );
-    onLogin.SkipTutorFunc();
     onSetting.ClickSetting();
-    onSetting.ChangePassword('987654321', '123456', '123456')
     onSetting.SettingNotification()
   });
 
   // {} if some test case add {} it mean we add a flag => reason: when run this test. cypress will skip the browser we setup
   it("Click Vietnamsalary", () => {
     onNavigationPage.VietNamSalary();
-    onWorkWithVietnamSalary.SearchRangeSalary('Tester', 'Hà Nội', '17000000', '2')
+    onWorkWithVietnamSalary.SearchRangeSalary('Tester', '17,000,000', '2')
     onWorkWithVietnamSalary.BlogPages()
-    onWorkWithVietnamSalary.Compound_Interest('13605303', '8000000', '3', '6,5')
-    onWorkWithVietnamSalary.Saving_plan('13605303', '8000000', '3', '5')
-    onWorkWithVietnamSalary.Login_ClickProfileVNS('quymy_m@yopmail.com', '987654321', 'Product Management', '17000000');
+    onWorkWithVietnamSalary.Compound_Interest('13,605,303', '8,000,000', '3', '6.5')
+    onWorkWithVietnamSalary.Saving_plan('13,605,303', '8,000,000', '3', '5')
+    onWorkWithVietnamSalary.Login_ClickProfileVNS('quymy_m@yopmail.com', '987654321', 'Product Management', '17,000,000');
   });
 
   it("Click Careermap then take some action", () => {
@@ -161,7 +106,7 @@ describe("Jobseekers Site", () => {
 
   it("Click Ultilities then click Salary Calculator", () => {
     onNavigationPage.UltilitiesSalaryCalculator();
-    onWorkWithUltilities.SalaryCalculator("18000000", "0");
+    onWorkWithUltilities.SalaryCalculator("18,000,000", "0");
   });
 
   it("Click Ultilities then click Test DISC", () => {
