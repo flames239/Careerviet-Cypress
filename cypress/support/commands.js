@@ -73,10 +73,10 @@ Cypress.Commands.add("chooseService", () => {
   cy.get('div[class="button"]')
     .find('a[class="btn-gradient btn-posting-jobs"]')
     .click(); // click btn postjobs
-  cy.wait(2000);
+  cy.wait(1000);
   cy.get('div[class="form-group form-submit"]').find("#btnSave").click(); // click confirm
   cy.get('div[class="jconfirm-buttons"] button').click(); // close popup confirm
-
+  cy.wait(1000);
   cy.get('table tbody tr td .list-manipulation li a[title="Tạm dừng đăng"]')
     .eq(0)
     .click();
