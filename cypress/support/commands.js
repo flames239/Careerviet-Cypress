@@ -65,3 +65,22 @@ Cypress.Commands.add("dayFill", (selector, days, month, years) => {
     .find('a[class="dtpicker-button dtpicker-buttonSet"]')
     .click();
 });
+
+Cypress.Commands.add("chooseService", () => {
+  cy.get('div[class="table-jobs-waiting"]')
+    .find("#c_pack_3228231_1126_4600130") //
+    .click(); // click service
+  cy.get('div[class="button"]')
+    .find('a[class="btn-gradient btn-posting-jobs"]')
+    .click(); // click btn postjobs
+  cy.wait(2000);
+  cy.get('div[class="form-group form-submit"]').find("#btnSave").click(); // click confirm
+  cy.get('div[class="jconfirm-buttons"] button').click(); // close popup confirm
+
+  cy.get('table tbody tr td .list-manipulation li a[title="Tạm dừng đăng"]')
+    .eq(0)
+    .click();
+  cy.get(".jconfirm-buttons").find("button").contains("Đồng ý").click(); //
+  cy.get(".jconfirm-buttons").find("button").contains("ok").click(); // đồng ý hạ job
+});
+
