@@ -310,28 +310,41 @@ export class EditCV {
 
   // Người tham khảo (Optional)
   Reference(fullNameRef, level, nameCompany, phoneNumberRef, emailRef) {
-    cy.get("#widget-20 .link-add a").click(); // open popup form
-    cy.get("#rref_name")
-      .clear()
-      .type(`${fullNameRef}`)
-      .should("be.visible", "have.value", `${fullNameRef}`); // input field Name Surname
-    cy.get("#rref_title")
-      .clear()
-      .type(`${level}`)
-      .should("be.visible", "have.value", `${level}`); // title field
-    cy.get("#rref_company")
-      .clear()
-      .type(`${nameCompany}`)
-      .should("be.visible", "have.value", `${nameCompany}`); // Name company
-    cy.get("#rref_phone")
-      .clear()
-      .type(`${phoneNumberRef}`)
-      .should("be.visible", "have.value", `${phoneNumberRef}`); // Phone number
-    cy.get("#rref_email")
-      .clear()
-      .type(`${emailRef}`)
-      .should("be.visible", "have.value", `${emailRef}`); // Email address
-    cy.get('#references-form .button-save button[class="btn-gradient"]').click(); // save
-  }
+  cy.get('#widget-20 div[class="widget-body"]').then(($listSticker) => {
+    if ($listSticker.length === 0) {
+      cy.get("#widget-20 .link-add a").click(); // open popup form
+      cy.get("#rref_name")
+        .clear()
+        .type(`${fullNameRef}`)
+        .should("be.visible", "have.value", `${fullNameRef}`); // input field Name Surname
+      cy.get("#rref_title")
+        .clear()
+        .type(`${level}`)
+        .should("be.visible", "have.value", `${level}`); // title field
+      cy.get("#rref_company")
+        .clear()
+        .type(`${nameCompany}`)
+        .should("be.visible", "have.value", `${nameCompany}`); // Name company
+      cy.get("#rref_phone")
+        .clear()
+        .type(`${phoneNumberRef}`)
+        .should("be.visible", "have.value", `${phoneNumberRef}`); // Phone number
+      cy.get("#rref_email")
+        .clear()
+        .type(`${emailRef}`)
+        .should("be.visible", "have.value", `${emailRef}`); // Email address
+      cy.get(
+        '#references-form .button-save button[class="btn-gradient"]'
+      ).click(); // save
+    } else {
+      cy.get('#widget-20 ul[class="list-action"]').then(($listAction) => {
+        if ($listAction.length >= 2) {
+          cy.get("#widget-20 .list-action .delete a").eq(0).click();
+          cy.get("#popup_content #popup_ok").click();
+        }
+      });
+    }
+  });
+}
 }
 export const onEditCVProfile = new EditCV();
