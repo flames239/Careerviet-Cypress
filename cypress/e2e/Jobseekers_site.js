@@ -19,6 +19,12 @@ describe("Jobseekers Site", () => {
     cy.openHomePage();
   });
 
+  
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+
   // it("Register Account", () => {
   //   onRegisterUser.Register_Function(
   //     "Hoang",

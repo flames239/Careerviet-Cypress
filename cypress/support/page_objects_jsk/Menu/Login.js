@@ -18,9 +18,9 @@ export class Login {
             .click();
 
         // transfer data in form login again
-        cy.get('#username').should('be.visible').clear().type(`${validEmail}`).should('have.value', `${validEmail}`)
-        cy.get('#password').should('be.visible').clear().type(`${validPass}`).should('have.value', `${validPass}`)
-        cy.get('#submit_login').should('be.visible').click({ force: true });
+        cy.get('#username').clear().type(`${validEmail}`).should('have.value', `${validEmail}`)
+        cy.get('#password').clear().type(`${validPass}`).should('have.value', `${validPass}`)
+        cy.get('#submit_login').click({ force: true });
     }
     SkipTutorFunc() {
         // skip popup tutorial
