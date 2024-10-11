@@ -1,10 +1,10 @@
 export class LECVTemplate {
   // Flow: Login Then Click Edit CV Template
-  ChangeEditTemplateCV() {
+  ClickChangeEditTemplateCV() {
     // click Edit CV Template on left menu Dashboard
     cy.get('nav[class="side-navbar"] ul[class="list-unstyled"] li')
       .eq(3)
-      .should('contain', 'Chỉnh mẫu hồ sơ')
+      .should('contain', 'Chỉnh Mẫu Hồ Sơ')
       .click();
   }
 
@@ -12,14 +12,13 @@ export class LECVTemplate {
     cy.get('.template .change').find('a').should('contain', 'Đổi Mẫu').click(); // Click link text đổi mẫu
     cy.get('.list-template').then(() => {
       // Find the visible parent div and then find the button inside it
-      cy.get('.btn-gradient.select-template-new')
+      cy.get('a[class ="btn-gradient select-template-new"]')
         .parents('.cv-item')
         .should('be.visible') // Ensure the parent is visible
         .eq(8)
-        .find('.btn-gradient.select-template-new')
+        .find('a[class ="btn-gradient select-template-new"]')
         .click(); // Click the button
     });
-    cy.get('[class="fancybox-button fancybox-close-small"]').click();
   }
 
   OnOffCoverCV() {
@@ -44,9 +43,10 @@ export class LECVTemplate {
     cy.get('[class="main-profile main-scroll-success"]').scrollTo('0','-20'); /*scroll Top*/
     cy.get('button[class="fancybox-button fancybox-close-small"]').click(); // close popup preview CV
     cy.get('#btn_savetemplate').should('be.visible').click(); // save CV template button
+    cy.wait(500)
     cy.get('a[class="btn-close-modal"]').click(); // close modal
 
-    cy.get('#btn_savetemplate').should('be.visible').click(); // download CV button
+    cy.get('.download-profile a').should('be.visible').click(); // download CV button
   }
 }
 
