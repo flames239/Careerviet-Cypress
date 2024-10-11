@@ -8,22 +8,15 @@ export class EditCV {
 
     // skip popup shared profile
     cy.get('[class="container-ckb"]').click();
-<<<<<<< HEAD
     cy.get('#popup-modal').contains("Đóng").click();
-=======
-    cy.get("#popup-modal").contains("Đóng").click();
->>>>>>> daaa7ff36cc4c19c1ff7935cc11b9921ae1be4ad
 
     // Title Resume
     cy.get("#t-resume-section").find('div[class="link-edit"] a').click();
     cy.get("#resume_title")
       .clear()
       .type(`${titleResume}`)
-<<<<<<< HEAD
-      .should('be.visible', 'have.value', `${titleResume}`);
-=======
       .should("be.visible", "have.value", `${titleResume}`);
->>>>>>> daaa7ff36cc4c19c1ff7935cc11b9921ae1be4ad
+
     cy.get("#t-resume-form")
       .find(".btn-gradient")
       .should("contain", "Lưu Lại")
@@ -311,40 +304,13 @@ export class EditCV {
   }
 
   // Thành tích nổi bật (Optional)
-  Highlight() {}
+  Highlight() { }
 
   // Hoạt động khác (Optional)
-  OtherActivity() {}
+  OtherActivity() { }
 
   // Người tham khảo (Optional)
   Reference(fullNameRef, level, nameCompany, phoneNumberRef, emailRef) {
-<<<<<<< HEAD
-    cy.get("#widget-20 .link-add a").click(); // open popup form
-    cy.get("#rref_name")
-      .clear()
-      .type(`${fullNameRef}`)
-      .should("be.visible", "have.value", `${fullNameRef}`); // input field Name Surname
-    cy.get("#rref_title")
-      .clear()
-      .type(`${level}`)
-      .should("be.visible", "have.value", `${level}`); // title field
-    cy.get("#rref_company")
-      .clear()
-      .type(`${nameCompany}`)
-      .should("be.visible", "have.value", `${nameCompany}`); // Name company
-    cy.get("#rref_phone")
-      .clear()
-      .type(`${phoneNumberRef}`)
-      .should("be.visible", "have.value", `${phoneNumberRef}`); // Phone number
-    cy.get("#rref_email")
-      .clear()
-      .type(`${emailRef}`)
-      .should("be.visible", "have.value", `${emailRef}`); // Email address
-    cy.get('#references-form .button-save button[class="btn-gradient"]').click(); // save
-  }
-}
-export const onEditCVProfile = new EditCV();
-=======
   cy.get('#widget-20 div[class="widget-body"]').then(($listSticker) => {
     if ($listSticker.length === 0) {
       cy.get("#widget-20 .link-add a").click(); // open popup form
@@ -383,4 +349,3 @@ export const onEditCVProfile = new EditCV();
 }
 }
 export const onEditCVProfile = new EditCV();
->>>>>>> daaa7ff36cc4c19c1ff7935cc11b9921ae1be4ad

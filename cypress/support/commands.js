@@ -165,9 +165,5 @@ Cypress.Commands.add("salaryRange", () => {
         .should("have.value", "1,500");
       cy.get("#salary_to").clear().type("2500").should("have.value", "2,500");
     }
-  });
-<<<<<<< HEAD
-})
-=======
-})
->>>>>>> daaa7ff36cc4c19c1ff7935cc11b9921ae1be4ad
+  })
+});
