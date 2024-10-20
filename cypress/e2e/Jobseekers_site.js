@@ -67,7 +67,7 @@ describe("Jobseekers Site", () => {
       "06",
       "2029"
     );
-    onEditCVTemplate.ChangeEditTemplateCV();
+    onEditCVTemplate.ClickChangeEditTemplateCV();
     onEditCVTemplate.ChangeTemplateCV();
     onEditCVTemplate.OnOffCoverCV();
     onEditCVTemplate.Language_Font_Size();
